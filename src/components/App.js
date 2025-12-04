@@ -1,4 +1,5 @@
 import React from "react";
+import "./../styles/App.css";
 import Tooltip from "./Tooltip";
 
 function App() {
@@ -6,10 +7,6 @@ function App() {
     <div>
       <Tooltip text="This is a tooltip">
         <h2>Hover over this heading</h2>
-      </Tooltip>
-
-      <Tooltip text="This is a tooltip">
-        <p>Hover over this first paragraph</p>
       </Tooltip>
 
       <Tooltip text="Another tooltip">

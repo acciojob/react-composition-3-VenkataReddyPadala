@@ -3,34 +3,32 @@ import React, { useState } from "react";
 function Tooltip({ text, children }) {
   const [visible, setVisible] = useState(false);
 
-  const child = React.Children.only(children);
+  return (
+    <div
+      className="tooltip"
+      style={{ position: "relative" }}
+      onMouseEnter={() => setVisible(true)}
+      onMouseLeave={() => setVisible(false)}
+    >
+      {children}
 
-  const handleMouseOver = (e) => {
-    setVisible(true);
-    if (child.props.onMouseOver) {
-      child.props.onMouseOver(e);
-    }
-  };
-
-  const handleMouseOut = (e) => {
-    setVisible(false);
-    if (child.props.onMouseOut) {
-      child.props.onMouseOut(e);
-    }
-  };
-
-  return React.cloneElement(
-    child,
-    {
-      // add tooltip class to the child element itself
-      className: `${child.props.className || ""} tooltip`.trim(),
-      onMouseOver: handleMouseOver,
-      onMouseOut: handleMouseOut,
-    },
-    <>
-      {child.props.children}
-      {visible && <div className="tooltiptext">{text}</div>}
-    </>
+      {visible && (
+        <span
+          style={{
+            color: "white",
+            backgroundColor: "red",
+            position: "absolute",
+            left: "20px",
+            bottom: "30px",
+            padding: "20px",
+            borderRadius: "10px",
+          }}
+          className="tooltiptext"
+        >
+          {text}
+        </span>
+      )}
+    </div>
   );
 }
 
