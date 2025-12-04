@@ -3,32 +3,36 @@ import React, { useState } from "react";
 function Tooltip({ text, children }) {
   const [visible, setVisible] = useState(false);
 
+  // We recreate the child element (h2, p) but add tooltip behavior
+  const Tag = children.type;
+  const childText = children.props.children;
+
   return (
-    <div
+    <Tag
       className="tooltip"
-      style={{ position: "relative" }}
       onMouseEnter={() => setVisible(true)}
       onMouseLeave={() => setVisible(false)}
+      style={{ position: "relative", display: "inline-block" }}
     >
-      {children}
+      {childText}
 
       {visible && (
-        <span
+        <div
+          className="tooltip-box"
           style={{
-            color: "white",
-            backgroundColor: "red",
             position: "absolute",
-            left: "20px",
             bottom: "30px",
-            padding: "20px",
-            borderRadius: "10px",
+            left: "20px",
+            backgroundColor: "red",
+            color: "white",
+            padding: "10px",
+            borderRadius: "6px",
           }}
-          className="tooltiptext"
         >
           {text}
-        </span>
+        </div>
       )}
-    </div>
+    </Tag>
   );
 }
 
