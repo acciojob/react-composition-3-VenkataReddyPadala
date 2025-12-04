@@ -1,15 +1,20 @@
 import React from "react";
+import "./../styles/App.css";
 import Tooltip from "./Tooltip";
 
 function App() {
   return (
     <div>
       <Tooltip text="This is a tooltip">
-        <h2>Hover over this heading</h2>
+        <h2 className="tooltip">
+          <div>Hover over this heading</div>
+        </h2>
       </Tooltip>
 
       <Tooltip text="Another tooltip">
-        <p>Hover over this second paragraph</p>
+        <p className="tooltip">
+          <div>This is another tooltip</div>
+        </p>
       </Tooltip>
     </div>
   );
