@@ -3,17 +3,14 @@ import React, { useState } from "react";
 function Tooltip({ text, children }) {
   const [visible, setVisible] = useState(false);
 
-  return (
-    <div>
-      <div
-        style={{ position: "relative", cursor: "pointer" }}
-        onMouseEnter={() => setVisible(true)}
-        onMouseLeave={() => setVisible(false)}
-      >
-        {children}
-
+  // Clone children to inject tooltip into their inner <div>
+  const modifiedChildren = React.cloneElement(children, {
+    children: (
+      <>
+        {children.props.children}
         {visible && (
-          <span
+          <div
+            className="tooltiptext"
             style={{
               color: "white",
               backgroundColor: "red",
@@ -23,12 +20,21 @@ function Tooltip({ text, children }) {
               padding: "20px",
               borderRadius: "10px",
             }}
-            className="tooltiptext"
           >
             {text}
-          </span>
+          </div>
         )}
-      </div>
+      </>
+    ),
+  });
+
+  return (
+    <div
+      style={{ position: "relative", cursor: "pointer" }}
+      onMouseEnter={() => setVisible(true)}
+      onMouseLeave={() => setVisible(false)}
+    >
+      {modifiedChildren}
     </div>
   );
 }
