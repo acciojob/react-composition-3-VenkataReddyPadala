@@ -7,7 +7,7 @@ function App() {
     <div>
       <Tooltip text="This is a tooltip">
         <h2 className="tooltip">
-          <div>Hover over this heading</div>
+          <div>This is a tooltip</div>
         </h2>
       </Tooltip>
 
