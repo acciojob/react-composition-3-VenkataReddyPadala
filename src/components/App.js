@@ -4,15 +4,15 @@ import Tooltip from "./Tooltip";
 function App() {
   return (
     <div>
-      <Tooltip text="Tooltip for heading">
+      <Tooltip text="This is a tooltip">
         <h2>Hover over this heading</h2>
       </Tooltip>
 
-      <Tooltip text="Tooltip for first paragraph">
+      <Tooltip text="This is a tooltip">
         <p>Hover over this first paragraph</p>
       </Tooltip>
 
-      <Tooltip text="Another tooltip for second paragraph">
+      <Tooltip text="Another tooltip">
         <p>Hover over this second paragraph</p>
       </Tooltip>
     </div>

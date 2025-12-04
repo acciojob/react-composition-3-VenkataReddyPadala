@@ -1,32 +1,31 @@
-// Tooltip.js
 import React, { useState } from "react";
 
 function Tooltip({ text, children }) {
   const [visible, setVisible] = useState(false);
 
-  // Ensure we only have a single React element as a child
   const child = React.Children.only(children);
+
+  const handleMouseOver = (e) => {
+    setVisible(true);
+    if (child.props.onMouseOver) {
+      child.props.onMouseOver(e);
+    }
+  };
+
+  const handleMouseOut = (e) => {
+    setVisible(false);
+    if (child.props.onMouseOut) {
+      child.props.onMouseOut(e);
+    }
+  };
 
   return React.cloneElement(
     child,
     {
-      // add / merge the tooltip class on the child element itself
-      className:
-        (child.props.className ? child.props.className + " " : "") + "tooltip",
-
-      // attach hover handlers while preserving any existing ones
-      onMouseEnter: (e) => {
-        setVisible(true);
-        if (child.props.onMouseEnter) {
-          child.props.onMouseEnter(e);
-        }
-      },
-      onMouseLeave: (e) => {
-        setVisible(false);
-        if (child.props.onMouseLeave) {
-          child.props.onMouseLeave(e);
-        }
-      },
+      // add tooltip class to the child element itself
+      className: `${child.props.className || ""} tooltip`.trim(),
+      onMouseOver: handleMouseOver,
+      onMouseOut: handleMouseOut,
     },
     <>
       {child.props.children}
