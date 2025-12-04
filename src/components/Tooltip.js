@@ -4,29 +4,31 @@ function Tooltip({ text, children }) {
   const [visible, setVisible] = useState(false);
 
   return (
-    <div
-      style={{ position: "relative", cursor: "pointer" }}
-      onMouseEnter={() => setVisible(true)}
-      onMouseLeave={() => setVisible(false)}
-    >
-      {children}
+    <div>
+      <div
+        style={{ position: "relative", cursor: "pointer" }}
+        onMouseEnter={() => setVisible(true)}
+        onMouseLeave={() => setVisible(false)}
+      >
+        {children}
 
-      {visible && (
-        <span
-          style={{
-            color: "white",
-            backgroundColor: "red",
-            position: "absolute",
-            left: "20px",
-            bottom: "30px",
-            padding: "20px",
-            borderRadius: "10px",
-          }}
-          className="tooltiptext"
-        >
-          {text}
-        </span>
-      )}
+        {visible && (
+          <span
+            style={{
+              color: "white",
+              backgroundColor: "red",
+              position: "absolute",
+              left: "20px",
+              bottom: "30px",
+              padding: "20px",
+              borderRadius: "10px",
+            }}
+            className="tooltiptext"
+          >
+            {text}
+          </span>
+        )}
+      </div>
     </div>
   );
 }
