@@ -13,11 +13,11 @@ function App() {
         </h2>
       </Tooltip>
 
-      {/* <Tooltip text="Another tooltip">
+      <Tooltip text="Another tooltip">
         <p className="tooltip">
           <div>This is another tooltip</div>
         </p>
-      </Tooltip> */}
+      </Tooltip>
     </div>
   );
 }
